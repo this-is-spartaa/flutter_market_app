@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class ProductDetail extends StatelessWidget {
+class ProductDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
