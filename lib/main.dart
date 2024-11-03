@@ -18,6 +18,14 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.orange),
         // 나중에 앱 메인 색상 쓸 때를 대비하여 정의!
         highlightColor: Colors.orange,
+        appBarTheme: AppBarTheme(
+          centerTitle: false,
+          titleTextStyle: TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+            color: Colors.black,
+          ),
+        ),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ButtonStyle(
             // 버튼 내 텍스트나 아이콘 위젯 색상
