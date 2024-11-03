@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_market_app/ui/pages/home/home_page.dart';
 import 'package:flutter_market_app/ui/pages/welcome/welcome_page.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -75,7 +76,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: WelcomePage(),
+      home: HomePage(),
     );
   }
 }
