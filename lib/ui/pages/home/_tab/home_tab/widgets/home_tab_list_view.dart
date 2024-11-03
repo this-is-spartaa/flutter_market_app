@@ -5,10 +5,13 @@ class HomeTabListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: ListView(
-        children: [
-          ProductListItem(),
-        ],
+      child: ListView.separated(
+        itemCount: 10,
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+        separatorBuilder: (context, index) => const Divider(height: 20),
+        itemBuilder: (context, index) {
+          return ProductListItem();
+        },
       ),
     );
   }
