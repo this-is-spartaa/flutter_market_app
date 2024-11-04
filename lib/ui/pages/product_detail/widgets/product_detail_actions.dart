@@ -54,7 +54,7 @@ class ProductDetailActions extends StatelessWidget {
               onTap: () {
                 Navigator.push(context, MaterialPageRoute(
                   builder: (context) {
-                    return ProductWritePage();
+                    return ProductWritePage(state);
                   },
                 ));
               },

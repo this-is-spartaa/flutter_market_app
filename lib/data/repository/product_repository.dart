@@ -44,4 +44,45 @@ class ProductRepository extends BaseRemoteRepository {
 
     return response.statusCode == 200;
   }
+
+  Future<Product?> create({
+    required String title,
+    required String content,
+    required List<int> imageFileIdList,
+    required int categoryId,
+    required int price,
+  }) async {
+    final response = await client.post("$host/api/product", data: {
+      'title': title,
+      'content': content,
+      'imageFileIdList': imageFileIdList,
+      'categoryId': categoryId,
+      'price': price,
+    });
+
+    if (response.statusCode == 201) {
+      return Product.fromJson(response.data['content']);
+    }
+    return null;
+  }
+
+  Future<bool> update({
+    required int id,
+    required String title,
+    required String content,
+    required List<int> imageFileIdList,
+    required int categoryId,
+    required int price,
+  }) async {
+    final response = await client.put("$host/api/product", data: {
+      'id': id,
+      'title': title,
+      'content': content,
+      'imageFileIdList': imageFileIdList,
+      'categoryId': categoryId,
+      'price': price,
+    });
+
+    return response.statusCode == 200;
+  }
 }

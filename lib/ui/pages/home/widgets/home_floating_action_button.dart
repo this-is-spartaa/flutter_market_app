@@ -25,7 +25,7 @@ class HomeFloatingActionButton extends StatelessWidget {
           onPressed: () {
             Navigator.push(context, MaterialPageRoute(
               builder: (context) {
-                return ProductWritePage();
+                return ProductWritePage(null);
               },
             ));
           },
