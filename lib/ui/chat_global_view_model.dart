@@ -62,4 +62,9 @@ class ChatGlobalViewModel extends Notifier<ChatGlobalState> {
       currentChat: null,
     );
   }
+
+  Future<int?> createChat(int productId) async {
+    final result = await chatRepository.create(productId);
+    return result?.roomId;
+  }
 }
