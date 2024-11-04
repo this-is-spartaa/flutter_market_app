@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_market_app/core/date_time_utils.dart';
 
 class ChatListSendItem extends StatelessWidget {
   ChatListSendItem({
@@ -28,8 +29,7 @@ class ChatListSendItem extends StatelessWidget {
                 ),
               ),
               Text(
-                // TODO 고치기
-                dateTime.toIso8601String(),
+                DateTimeUtils.formatString(dateTime),
                 style: TextStyle(
                   fontSize: 11,
                   color: Colors.black45,

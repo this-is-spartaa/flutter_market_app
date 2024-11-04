@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_market_app/core/date_time_utils.dart';
 import 'package:flutter_market_app/ui/widgets/user_profile_image.dart';
 
 class ChatListReceiveItem extends StatelessWidget {
@@ -41,8 +42,7 @@ class ChatListReceiveItem extends StatelessWidget {
                 ),
               ),
               Text(
-                // TODO 고치기! 우선 toIso8601String으로 구현
-                dateTime.toIso8601String(),
+                DateTimeUtils.formatString(dateTime),
                 style: TextStyle(
                   fontSize: 11,
                   color: Colors.black45,
