@@ -1,3 +1,4 @@
+import 'package:flutter_market_app/data/model/product.dart';
 import 'package:flutter_market_app/data/model/product_summary.dart';
 import 'package:flutter_market_app/data/repository/base_remote_repository.dart';
 
@@ -16,6 +17,15 @@ class ProductRepository extends BaseRemoteRepository {
       return List.of(response.data['content']['content'])
           .map((e) => ProductSummary.fromJson(e))
           .toList();
+    }
+    return null;
+  }
+
+  Future<Product?> fetchDetail(int productId) async {
+    final response = await client.get("$host/api/product/$productId");
+
+    if (response.statusCode == 200) {
+      return Product.fromJson(response.data['content']);
     }
     return null;
   }

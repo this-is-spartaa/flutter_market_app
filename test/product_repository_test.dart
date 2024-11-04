@@ -22,4 +22,16 @@ void main() {
       }
     },
   );
+
+  test(
+    'ProductRepository : fetchDetail test',
+    () async {
+      await userRepository.login(username: 'tester', password: '1111');
+      // productId 1 더미데이터 들어가있기 때문에 productId 1로 테스트
+      final product = await productRepository.fetchDetail(1);
+
+      expect(product == null, false);
+      print(product!.toJson());
+    },
+  );
 }
