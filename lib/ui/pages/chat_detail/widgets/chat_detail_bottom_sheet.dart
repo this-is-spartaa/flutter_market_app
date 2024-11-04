@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_market_app/ui/chat_global_view_model.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class ChatDetailBottomSheet extends StatefulWidget {
+class ChatDetailBottomSheet extends ConsumerStatefulWidget {
   final double bottomPadding;
 
   const ChatDetailBottomSheet({
@@ -9,10 +11,11 @@ class ChatDetailBottomSheet extends StatefulWidget {
   });
 
   @override
-  State<ChatDetailBottomSheet> createState() => _ChatDetailBottomSheetState();
+  ConsumerState<ChatDetailBottomSheet> createState() =>
+      _ChatDetailBottomSheetState();
 }
 
-class _ChatDetailBottomSheetState extends State<ChatDetailBottomSheet> {
+class _ChatDetailBottomSheetState extends ConsumerState<ChatDetailBottomSheet> {
   final controller = TextEditingController();
 
   @override
@@ -22,9 +25,10 @@ class _ChatDetailBottomSheetState extends State<ChatDetailBottomSheet> {
   }
 
   void onSend() {
-    print(controller.text);
-    // 컨트롤러 값 초기화
-    controller.text = '';
+    if (controller.text.trim().isNotEmpty) {
+      ref.read(chatGlobalViewModel.notifier).send(controller.text);
+      controller.text = '';
+    }
   }
 
   @override

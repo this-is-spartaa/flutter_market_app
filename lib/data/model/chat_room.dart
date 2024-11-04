@@ -17,6 +17,21 @@ class ChatRoom {
     required this.createdAt,
   });
 
+  ChatRoom copyWith({
+    int? roomId,
+    ChatProduct? product,
+    User? sender,
+    List<ChatMessage>? messages,
+    DateTime? createdAt,
+  }) =>
+      ChatRoom(
+        roomId: roomId ?? this.roomId,
+        product: product ?? this.product,
+        sender: sender ?? this.sender,
+        messages: messages ?? this.messages,
+        createdAt: createdAt ?? this.createdAt,
+      );
+
   ChatRoom.fromJson(Map<String, dynamic> json)
       : this(
           roomId: json["roomId"],
