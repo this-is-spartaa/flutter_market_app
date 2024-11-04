@@ -29,4 +29,19 @@ class ProductRepository extends BaseRemoteRepository {
     }
     return null;
   }
+
+  Future<bool?> like(int productId) async {
+    final response = await client.post("$host/api/product/like/$productId");
+
+    if (response.statusCode == 200) {
+      return response.data['content'];
+    }
+    return null;
+  }
+
+  Future<bool> delete(int productId) async {
+    final response = await client.delete("$host/api/product/$productId");
+
+    return response.statusCode == 200;
+  }
 }
