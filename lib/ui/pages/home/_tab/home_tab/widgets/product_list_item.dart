@@ -15,7 +15,7 @@ class ProductListItem extends StatelessWidget {
       onTap: () {
         Navigator.push(context, MaterialPageRoute(
           builder: (context) {
-            return ProductDetailPage();
+            return ProductDetailPage(product.id);
           },
         ));
       },

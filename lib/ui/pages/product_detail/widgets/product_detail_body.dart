@@ -1,43 +1,58 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_market_app/core/date_time_utils.dart';
+import 'package:flutter_market_app/ui/pages/product_detail/product_detail_view_model.dart';
 import 'package:flutter_market_app/ui/widgets/user_profile_image.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class ProductDetailBody extends StatelessWidget {
+  const ProductDetailBody(this.productId, {super.key});
+
+  final int productId;
+
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(
-        left: 20,
-        right: 20,
-        top: 10,
-        bottom: 800,
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          profileArea(),
-          Divider(height: 30),
-          Text(
-            '아이폰 팝니다',
-            style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-            ),
+    return Consumer(
+      builder: (context, ref, child) {
+        final state = ref.watch(productDetailViewModel(productId));
+        if (state == null) {
+          return SizedBox();
+        }
+        return Padding(
+          padding: const EdgeInsets.only(
+            left: 20,
+            right: 20,
+            top: 10,
+            bottom: 800,
           ),
-          SizedBox(height: 10),
-          Text(
-            '디지털 가전 - 1분전',
-            style: TextStyle(
-              fontSize: 12,
-              color: Colors.grey,
-            ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              profileArea(),
+              Divider(height: 30),
+              Text(
+                state.title,
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              SizedBox(height: 10),
+              Text(
+                '${state.category.category} - ${DateTimeUtils.formatString(state.updatedAt)}',
+                style: TextStyle(
+                  fontSize: 12,
+                  color: Colors.grey,
+                ),
+              ),
+              SizedBox(height: 10),
+              Text(
+                state.content,
+                style: TextStyle(fontSize: 16),
+              )
+            ],
           ),
-          SizedBox(height: 10),
-          Text(
-            '네고 안돼요~!',
-            style: TextStyle(fontSize: 16),
-          )
-        ],
-      ),
+        );
+      },
     );
   }
 

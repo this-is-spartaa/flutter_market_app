@@ -32,6 +32,36 @@ class Product {
     required this.createdAt,
   });
 
+  // 필요한 부분만 변경하고 새로운 객체로 만들 때 사용!
+  Product copyWith({
+    int? id,
+    String? title,
+    String? content,
+    List<FileModel>? imageFiles,
+    User? user,
+    Address? address,
+    ProductCategory? category,
+    int? price,
+    int? likeCnt,
+    bool? myLike,
+    DateTime? updatedAt,
+    DateTime? createdAt,
+  }) =>
+      Product(
+        id: id ?? this.id,
+        title: title ?? this.title,
+        content: content ?? this.content,
+        imageFiles: imageFiles ?? this.imageFiles,
+        user: user ?? this.user,
+        address: address ?? this.address,
+        category: category ?? this.category,
+        price: price ?? this.price,
+        likeCnt: likeCnt ?? this.likeCnt,
+        myLike: myLike ?? this.myLike,
+        updatedAt: updatedAt ?? this.updatedAt,
+        createdAt: createdAt ?? this.createdAt,
+      );
+
   Product.fromJson(Map<String, dynamic> json)
       : this(
           id: json["id"],
